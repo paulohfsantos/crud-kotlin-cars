@@ -1,8 +1,11 @@
 package com.example.androidexampleapp.controller
 
+import android.content.Intent
+import io.github.cdimascio.dotenv.dotenv
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +13,12 @@ import com.example.androidexampleapp.R
 import com.example.androidexampleapp.model.Cars
 import com.example.androidexampleapp.model.DataStore
 import com.example.androidexampleapp.view.CarsListAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
+val dotenv = dotenv {
+    directory = "../../../../.env"
+    ignoreIfMissing = true
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +28,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+
+        DataStore.setContext(this)
+        val fabBtn = findViewById<FloatingActionButton>(R.id.fab)
+        fabBtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, CarsActivity::class.java).apply {
+                putExtra("type", 1)
+            }
+
+            startActivity(intent)
+        }
+
 
         val count = DataStore.cars.size // length of the array
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidExampleApp</string>
+    <string name="app_name">Cars List Management</string>
     <string name="action_settings">Settings</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -11,4 +11,6 @@
     <string name="price">Price:</string>
     <string name="color">Color:</string>
     <string name="year">Year:</string>
+    <string name="clear_cars">Clear Cars</string>
+    <string name="save_car">Save Car</string>
 </resources>
