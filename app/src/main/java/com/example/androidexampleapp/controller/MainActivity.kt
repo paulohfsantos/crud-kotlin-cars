@@ -34,12 +34,10 @@ class MainActivity : AppCompatActivity() {
 
 
         DataStore.setContext(this)
+
         val fabBtn = findViewById<FloatingActionButton>(R.id.fab)
         fabBtn.setOnClickListener {
-            val intent = Intent(this@MainActivity, CarsActivity::class.java).apply {
-                putExtra("type", 1)
-            }
-
+            val intent = Intent(this@MainActivity, CarsActivity::class.java)
             startActivity(intent)
         }
 

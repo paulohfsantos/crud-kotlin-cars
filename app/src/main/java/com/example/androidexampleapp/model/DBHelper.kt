@@ -11,17 +11,17 @@ import kotlin.math.log
 class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        val DATABASE_VERSION: Int = dotenv["ENV_DB_VERSION"].toInt()
-        val DATABASE_NAME: String = dotenv["ENV_DB_NAME"] //"cars.db"
-        val TABLE_NAME: String = dotenv["ENV_TABLE_NAME"] //"cars"
-        val COLUMN_ID: String = dotenv["ENV_COLUMN_ID"] //"id"
-        val COLUMN_NAME: String = dotenv["ENV_COLUMN_NAME"] //"car_name"
-        val COLUMN_YEAR: String = dotenv["ENV_COLUMN_YEAR"] //"year"
-        val COLUMN_PRICE: String = dotenv["ENV_COLUMN_PRICE"] //"price"
-        val COLUMN_COLOR: String = dotenv["ENV_COLUMN_COLOR"] //"color"
+        const val DATABASE_VERSION = 2
+        const val DATABASE_NAME = "cars.db"
+        const val TABLE_NAME = "cars"
+        const val COLUMN_ID = "id"
+        const val COLUMN_NAME = "car_name"
+        const val COLUMN_YEAR = "year"
+        const val COLUMN_PRICE = "price"
+        const val COLUMN_COLOR = "color"
 
-        val query = (
-            "CREATE TABLE" +
+        const val sqlCreateCars = (
+            "CREATE TABLE IF NOT EXISTS " +
             TABLE_NAME +
             "($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
             "$COLUMN_NAME TEXT," +
@@ -29,21 +29,24 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
             "$COLUMN_PRICE INTEGER," +
             "$COLUMN_COLOR TEXT)"
         )
+        const val sqlDrop = "DROP TABLE IF EXISTS $TABLE_NAME"
     }
 
-    override fun onCreate(db: SQLiteDatabase) {
-        db.beginTransaction()
+    override fun onCreate(db: SQLiteDatabase?) {
+        val db = db ?: return
 
+        db.beginTransaction()
         try {
-            db.execSQL(query)
+            db.execSQL(sqlCreateCars)
             db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
         }
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+
+        val db = db ?: return
 
         if (oldVersion < newVersion) {
             db.beginTransaction()

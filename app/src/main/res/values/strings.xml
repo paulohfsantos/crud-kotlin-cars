@@ -4,13 +4,17 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="greetings">Hello world</string>
     <string name="car_list">Car List</string>
-    <string name="car_name">Car name:</string>
-    <string name="brand">Brand:</string>
-    <string name="price">Price:</string>
-    <string name="color">Color:</string>
-    <string name="year">Year:</string>
+
+    <string name="car_name">Car name</string>
+    <string name="brand">Brand</string>
+    <string name="price">Price</string>
+    <string name="color">Color</string>
+    <string name="year">Year</string>
+
     <string name="clear_cars">Clear Cars</string>
     <string name="save_car">Save Car</string>
+
+    <string name="car_name_brand">Car Name/Brand</string>
+    <string name="car_form">Car Form</string>
 </resources>

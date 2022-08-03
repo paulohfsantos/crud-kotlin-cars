@@ -16,11 +16,11 @@ object DataStore {
         }
     }
 
-//    init {
-//        addCar(Cars(1,"Audi", "2022", "black", 154000))
-//        addCar(Cars(1,"BMW", "2018", "silver", 85000))
-//        addCar(Cars(1,"Mercedes", "2020", "red", 90000))
-//    }
+    //init {
+    //  addCar(Cars(1,"Audi", "2022", "black", 154000))
+    //  addCar(Cars(1,"BMW", "2018", "silver", 85000))
+    //  addCar(Cars(1,"Mercedes", "2020", "red", 90000))
+    //}
 
     // crud methods
 

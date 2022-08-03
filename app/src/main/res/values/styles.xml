@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Toolbar customization-->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Toolbar">
+        <item name="android:textColorPrimary">@color/graffiti</item>
+        <item name="android:textColorSecondary">@color/graffiti</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenu</item>
+        <item name="textAppearanceLargePopupMenu">@style/OverflowMenu</item>
+    </style>
+
+    <style name="OverflowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@color/graffiti</item>
+    </style>
+
+    <!-- CollapsingToolbar Settings -->
+    <style name="AppTheme.CollapsingToolbarCollapsed" parent="@android:style/TextAppearance">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/graffiti</item>
+    </style>
+    <style name="AppTheme.CollapsingToolbarExpanded" parent="@android:style/TextAppearance">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>
