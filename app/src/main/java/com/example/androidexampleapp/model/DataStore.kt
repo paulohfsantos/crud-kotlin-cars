@@ -32,7 +32,7 @@ object DataStore {
         val id = database?.insertCar(car) ?: return
 
         if (id > 0) {
-            car.id = id.toInt()
+            car.id = id
             cars.add(car)
 
             Log.d("SQLite!", "Car successfully added")

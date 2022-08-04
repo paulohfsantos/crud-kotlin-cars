@@ -13,6 +13,7 @@ import com.example.androidexampleapp.R
 import com.example.androidexampleapp.model.Cars
 import com.example.androidexampleapp.model.DataStore
 import com.example.androidexampleapp.view.CarsListAdapter
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 val dotenv = dotenv {
@@ -58,9 +59,18 @@ class MainActivity : AppCompatActivity() {
 
         val rcvCars = findViewById<RecyclerView>(R.id.recyclerViewCars)
         val layoutManager = LinearLayoutManager(this)
+
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         rcvCars.layoutManager = layoutManager
         adapter = CarsListAdapter(DataStore.cars)
         rcvCars.adapter = adapter
+
+        updateToolbarTitle()
+    }
+
+    private fun updateToolbarTitle() {
+        val collapsingToolbar = findViewById<CollapsingToolbarLayout>(R.id.toolbar)
+
+        collapsingToolbar.title = "Cars (${DataStore.cars.size})"
     }
 }

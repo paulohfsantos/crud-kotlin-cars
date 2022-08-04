@@ -17,4 +17,5 @@
 
     <string name="car_name_brand">Car Name/Brand</string>
     <string name="car_form">Car Form</string>
+    <string name="save">Save</string>
 </resources>

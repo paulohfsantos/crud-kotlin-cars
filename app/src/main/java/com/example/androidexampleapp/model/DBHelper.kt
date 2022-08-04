@@ -5,8 +5,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import com.example.androidexampleapp.controller.dotenv
-import kotlin.math.log
 
 class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -87,15 +85,15 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
 
         with(cursor) {
             while (moveToNext()) {
-                val id = getInt(getColumnIndex(COLUMN_ID))
+                val id = getLong(getColumnIndex(COLUMN_ID))
                 val name = getString(getColumnIndex(COLUMN_NAME))
                 val year = getString(getColumnIndex(COLUMN_YEAR))
                 val price = getInt(getColumnIndex(COLUMN_PRICE))
                 val color = getString(getColumnIndex(COLUMN_COLOR))
 
-                val car = Cars(id, name, year, color, price) // on Cars class model order
+                val car = Cars(name, year, color, price) // on Cars class model order
 
-                car.id = id.toLong().toInt()
+                car.id = id
                 cars.add(car)
             }
         }
