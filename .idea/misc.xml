@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/drawable/border.xml" value="0.197" />
         <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2115" />
         <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/layout/activity_main.xml" value="0.338768115942029" />
         <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/layout/cars_management.xml" value="0.33" />
         <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/layout/content_main.xml" value="0.35688405797101447" />
-        <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/layout/rcv_cars.xml" value="0.35688405797101447" />
+        <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/layout/rcv_cars.xml" value="0.33" />
         <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Paulo/Documents/Projetos/AndroidExampleApp/app/src/main/res/menu/save_car_data.xml" value="0.365625" />
       </map>
