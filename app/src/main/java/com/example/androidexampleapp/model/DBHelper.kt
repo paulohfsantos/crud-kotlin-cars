@@ -88,7 +88,7 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
                 val id = getLong(getColumnIndex(COLUMN_ID))
                 val name = getString(getColumnIndex(COLUMN_NAME))
                 val year = getString(getColumnIndex(COLUMN_YEAR))
-                val price = getInt(getColumnIndex(COLUMN_PRICE))
+                val price = getString(getColumnIndex(COLUMN_PRICE))
                 val color = getString(getColumnIndex(COLUMN_COLOR))
 
                 val car = Cars(name, year, color, price) // on Cars class model order
@@ -143,9 +143,6 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
         try {
             count = db.update(TABLE_NAME, contentValues, selection, selectionArgs)
             db.setTransactionSuccessful()
-        } catch (e: Exception) {
-            Log.d("Error edit =>", e.toString())
-            e.printStackTrace()
         } finally {
             db.endTransaction()
         }

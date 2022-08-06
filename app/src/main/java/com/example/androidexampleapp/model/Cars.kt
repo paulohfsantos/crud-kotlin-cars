@@ -4,7 +4,7 @@ class Cars(
     var car_name: String,
     var year: String,
     var color: String,
-    var price: Int,
+    var price: String,
 ) {
     var id: Long = 0
 }

@@ -3,8 +3,12 @@ package com.example.androidexampleapp.controller
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.androidexampleapp.R
@@ -13,8 +17,9 @@ import com.example.androidexampleapp.model.DataStore
 import com.google.android.material.textfield.TextInputEditText
 
 class CarsActivity : AppCompatActivity() {
-    private var position = 0
-    private var type = 0
+    var position = 0
+    // receiving this type in main activity on PutExtra method
+    var type = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,29 +53,34 @@ class CarsActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.save_car_data, menu)
-
         return true
     }
 
-    // save data with button in toolbar
+    // save data
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("type-1", type.toString())
         when (item.itemId) {
             R.id.saveData -> {
-                val txtCarName = findViewById<TextInputEditText>(R.id.inputCarName)
-                val txtCarColor = findViewById<TextInputEditText>(R.id.inputCarColor)
-                val txtCarYear = findViewById<TextInputEditText>(R.id.inputCarYear)
-                val txtCarPrice = findViewById<TextInputEditText>(R.id.inputCarPrice)
+                Log.d("type-2", type.toString())
+                val txtCarName = findViewById<EditText>(R.id.inputCarName)
+                val txtCarColor = findViewById<EditText>(R.id.inputCarColor)
+                val txtCarYear = findViewById<EditText>(R.id.inputCarYear)
+                val txtCarPrice = findViewById<EditText>(R.id.inputCarPrice)
 
                 val car = Cars(
                     txtCarName.text.toString(),
                     txtCarYear.text.toString(),
                     txtCarColor.text.toString(),
-                    txtCarPrice.text.toString().toInt(),
+                    txtCarPrice.text.toString(),
                 )
 
+                Log.d("type-3", type.toString())
+
                 if (type == 1) {
+                    Log.d("type-4", type.toString())
                     DataStore.addCar(car)
                 } else if (type == 2) {
+                    Log.d("type-5", type.toString())
                     DataStore.editCar(car, position)
                 }
 

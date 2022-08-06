@@ -7,6 +7,8 @@ import io.github.cdimascio.dotenv.dotenv
 import android.os.Bundle
 import android.util.Log
 import android.view.GestureDetector
+import android.view.Menu
+import android.view.MenuItem
 import android.view.MotionEvent
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -46,19 +48,15 @@ class MainActivity : AppCompatActivity() {
 
         val fabBtn = findViewById<FloatingActionButton>(R.id.fab)
         fabBtn.setOnClickListener {
-            val intent = Intent(this@MainActivity, CarsActivity::class.java).apply {
-                putExtra("isNew", 1)
+            val intent = Intent(this, CarsActivity::class.java).apply {
+                putExtra("car", true)
             }
-            //startActivityForResult(intent, 1)
-            startActivity(intent)
+            getAction.launch(intent)
         }
-
-        updateToolbarTitle()
 
         val rcvCars = findViewById<RecyclerView>(R.id.recyclerViewCars)
         val layoutManager = LinearLayoutManager(this)
 
-        layoutManager.orientation = LinearLayoutManager.VERTICAL
         rcvCars.layoutManager = layoutManager
         adapter = CarsListAdapter(DataStore.cars)
         rcvCars.adapter = adapter
@@ -73,11 +71,10 @@ class MainActivity : AppCompatActivity() {
                     view?.let {
                         val position = rcvCars.getChildAdapterPosition(view)
                         val intent = Intent(this@MainActivity, CarsActivity::class.java).apply {
-                            putExtra("car", 2)
+                            putExtra("type", 2)
                             putExtra("position", position)
                         }
-                        // startActivityForResult(intent, 2)
-                        startActivity(intent)
+                        getAction.launch(intent)
                     }
                 }
 
@@ -113,12 +110,17 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun updateToolbarTitle() {
+        val collapsingToolbar = findViewById<Toolbar>(R.id.toolbar)
+        collapsingToolbar.title = "Cars (${DataStore.cars.size})"
+    }
+
     private fun deleteDialogHandler(car: Cars, position: Int) {
         val dialog = AlertDialog.Builder(this@MainActivity)
 
         dialog.setTitle("Delete Car?")
         dialog.setMessage("Are you sure you want to delete ${car.car_name}?")
-        dialog.setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
+        dialog.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
             DataStore.deleteCar(position)
             adapter!!.notifyDataSetChanged()
 
@@ -137,16 +139,57 @@ class MainActivity : AppCompatActivity() {
         .show()
     }
 
-    private fun updateToolbarTitle() {
-        val collapsingToolbar = findViewById<Toolbar>(R.id.toolbar)
+    fun confirmClearList() {
+        val dialog = AlertDialog.Builder(this@MainActivity)
 
-        collapsingToolbar.title = "Cars (${DataStore.cars.size})"
+        dialog.setTitle("Clear List?")
+        dialog.setMessage("Are you sure you want to clear the list?")
+        dialog.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+            DataStore.clearCarList()
+            adapter!!.notifyDataSetChanged()
+
+            val mainLayout = findViewById<CoordinatorLayout>(R.id.layoutMain)
+            Snackbar.make(
+                mainLayout,
+                "List cleared",
+                Snackbar.LENGTH_LONG
+            ).show()
+
+            updateToolbarTitle()
+        })
+        .setNegativeButton("No", DialogInterface.OnClickListener { dialog, _ ->
+            dialog.dismiss()
+        }).show()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.clearList -> {
+                confirmClearList()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    // startActivityForResult is deprecated, using this method instead
     val getAction = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
-            // adapter!!.notifyDataSetChanged()
-            // updateToolbarTitle()
+            adapter!!.notifyDataSetChanged()
+            updateToolbarTitle()
+        }
+    }
+
+    // TODO: implement later
+    private fun onActivityResult(requestCode: Int, result: ActivityResult) {
+        if(result.resultCode == Activity.RESULT_OK) {
+            adapter!!.notifyDataSetChanged()
+            updateToolbarTitle()
         }
     }
 }

@@ -16,12 +16,6 @@ object DataStore {
         }
     }
 
-    //init {
-    //  addCar(Cars(1,"Audi", "2022", "black", 154000))
-    //  addCar(Cars(1,"BMW", "2018", "silver", 85000))
-    //  addCar(Cars(1,"Mercedes", "2020", "red", 90000))
-    //}
-
     // crud methods
 
     fun getCars(position: Int): Cars {
@@ -34,8 +28,6 @@ object DataStore {
         if (id > 0) {
             car.id = id
             cars.add(car)
-
-            Log.d("SQLite!", "Car successfully added")
         }
     }
 
@@ -44,8 +36,7 @@ object DataStore {
         val count = database?.updateCar(car) ?: return
 
         if (count > 0) {
-            cars[position] = car
-            Log.d("SQLite!", "Car successfully updated")
+            cars.set(position, car)
         }
     }
 
