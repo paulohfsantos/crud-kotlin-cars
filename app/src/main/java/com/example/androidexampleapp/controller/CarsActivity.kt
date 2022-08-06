@@ -16,11 +16,6 @@ class CarsActivity : AppCompatActivity() {
     private var position = 0
     private var type = 0
 
-//    private val txtCarName = findViewById<TextInputEditText>(R.id.inputCarName)
-//    private val txtCarColor = findViewById<TextInputEditText>(R.id.inputCarColor)
-//    private val txtCarYear = findViewById<TextInputEditText>(R.id.inputCarYear)
-//    private val txtCarPrice = findViewById<TextInputEditText>(R.id.inputCarPrice)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cars_management)
@@ -68,9 +63,9 @@ class CarsActivity : AppCompatActivity() {
 
                 val car = Cars(
                     txtCarName.text.toString(),
-                    txtCarColor.text.toString(),
                     txtCarYear.text.toString(),
-                    txtCarPrice.text.toString().toInt()
+                    txtCarColor.text.toString(),
+                    txtCarPrice.text.toString().toInt(),
                 )
 
                 if (type == 1) {

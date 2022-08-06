@@ -50,6 +50,17 @@ object DataStore {
     }
 
     fun deleteCar(position: Int) {
-        cars.removeAt(position)
+        val count = database?.deleteCar(cars[position]) ?: return
+
+        if (count > 0) {
+            cars.removeAt(position)
+        }
+    }
+
+    fun clearCarList() {
+        val count = database?.deleteAllCars() ?: return
+        if (count > 0) {
+            cars.clear()
+        }
     }
 }
