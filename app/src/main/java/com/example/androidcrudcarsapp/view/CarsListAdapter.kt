@@ -1,13 +1,13 @@
-package com.example.androidexampleapp.view
+package com.example.androidcrudcarsapp.view
 
 import android.view.LayoutInflater
-import com.example.androidexampleapp.R
+import com.example.androidcrudcarsapp.R
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidexampleapp.model.Cars
+import com.example.androidcrudcarsapp.model.Cars
 
 
 class CarsListAdapter(var carsList: MutableList<Cars>) : RecyclerView.Adapter<CarsListAdapter.CarsHolder>() {

@@ -1,4 +1,4 @@
-package com.example.androidexampleapp.model
+package com.example.androidcrudcarsapp.model
 
 import android.content.ContentValues
 import android.content.Context

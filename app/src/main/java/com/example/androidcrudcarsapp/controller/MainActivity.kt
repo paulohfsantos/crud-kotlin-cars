@@ -1,11 +1,9 @@
-package com.example.androidexampleapp.controller
+package com.example.androidcrudcarsapp.controller
 
-import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import io.github.cdimascio.dotenv.dotenv
 import android.os.Bundle
-import android.util.Log
 import android.view.GestureDetector
 import android.view.Menu
 import android.view.MenuItem
@@ -16,14 +14,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidexampleapp.R
-import com.example.androidexampleapp.model.Cars
-import com.example.androidexampleapp.model.DataStore
-import com.example.androidexampleapp.view.CarsListAdapter
-import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.example.androidcrudcarsapp.R
+import com.example.androidcrudcarsapp.model.Cars
+import com.example.androidcrudcarsapp.model.DataStore
+import com.example.androidcrudcarsapp.view.CarsListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -179,7 +175,7 @@ class MainActivity : AppCompatActivity() {
 
     // startActivityForResult is deprecated, using this method instead
     val getAction = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-        if (result.resultCode == Activity.RESULT_OK) {
+        if (result.resultCode == RESULT_OK) {
             adapter!!.notifyDataSetChanged()
             updateToolbarTitle()
         }
@@ -187,7 +183,7 @@ class MainActivity : AppCompatActivity() {
 
     // TODO: implement later
     private fun onActivityResult(requestCode: Int, result: ActivityResult) {
-        if(result.resultCode == Activity.RESULT_OK) {
+        if(result.resultCode == RESULT_OK) {
             adapter!!.notifyDataSetChanged()
             updateToolbarTitle()
         }

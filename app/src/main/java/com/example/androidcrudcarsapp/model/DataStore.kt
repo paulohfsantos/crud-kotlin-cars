@@ -1,7 +1,6 @@
-package com.example.androidexampleapp.model
+package com.example.androidcrudcarsapp.model
 
 import android.content.Context
-import android.util.Log
 
 object DataStore {
     var cars: MutableList<Cars> = arrayListOf()

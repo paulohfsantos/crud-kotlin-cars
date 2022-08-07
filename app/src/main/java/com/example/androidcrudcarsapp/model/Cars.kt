@@ -1,4 +1,4 @@
-package com.example.androidexampleapp.model
+package com.example.androidcrudcarsapp.model
 
 class Cars(
     var car_name: String,

@@ -1,4 +1,4 @@
-package com.example.androidexampleapp.controller
+package com.example.androidcrudcarsapp.controller
 
 import android.app.Activity
 import android.content.Intent
@@ -7,13 +7,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.androidexampleapp.R
-import com.example.androidexampleapp.model.Cars
-import com.example.androidexampleapp.model.DataStore
+import com.example.androidcrudcarsapp.R
+import com.example.androidcrudcarsapp.model.Cars
+import com.example.androidcrudcarsapp.model.DataStore
 import com.google.android.material.textfield.TextInputEditText
 
 class CarsActivity : AppCompatActivity() {
